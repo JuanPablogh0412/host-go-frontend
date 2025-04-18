@@ -1,0 +1,9 @@
+export enum Bancos {
+    BANCOLOMBIA = 'BANCOLOMBIA',
+    DAVIVIENDA = 'DAVIVIENDA',
+    BBVA = 'BBVA',
+    NU = 'NU',
+    BANCO_CAJA_SOCIAL = 'BANCO_CAJA_SOCIAL',
+    CITIBANK = 'CITIBANK'
+  }
+  
