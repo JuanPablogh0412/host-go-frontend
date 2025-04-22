@@ -1,9 +1,9 @@
-<div class="crear-arrendador-background">
+<div class="crear-arrendatario-background">
   <div class="registro-container">
-    <h2 *ngIf="!successMessage">Crear cuenta de Arrendador</h2>
+    <h2 *ngIf="!successMessage">Crear cuenta de Arrendatario</h2>
 
     <!-- FORMULARIO SOLO SI NO HAY MENSAJE DE ÉXITO -->
-    <form *ngIf="!successMessage" [formGroup]="arrendadorForm" (ngSubmit)="onSubmit()" class="registro-form">
+    <form *ngIf="!successMessage" [formGroup]="arrendatarioForm" (ngSubmit)="onSubmit()" class="registro-form">
       <div class="form-group" [ngClass]="{ 'error-field': isInvalid('cedula') }">
         <label for="cedula">Cédula</label>
         <input type="number" id="cedula" formControlName="cedula" placeholder="Ej: 1234567890" />
@@ -40,7 +40,7 @@
         <small *ngIf="isInvalid('contrasena')">La contraseña debe tener al menos 8 caracteres.</small>
       </div>
 
-      <button type="submit" [disabled]="arrendadorForm.invalid">Registrarse</button>
+      <button type="submit" [disabled]="arrendatarioForm.invalid">Registrarse</button>
     </form>
 
     <!-- MENSAJES -->

@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ArrendadorService } from '../../../services/arrendador.service';
-import { ArrendadorCreate } from '../../../models/arrendador-create.model';
+import { ArrendatarioService } from '../../../services/arrendatario.service';
+import { ArrendatarioCreate } from '../../../models/arrendatario-create.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  selector: 'app-arrendador-create',
+  selector: 'app-arrendatario-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class ArrendadorCreateComponent {
+export class ArrendatarioCreateComponent {
 
-  arrendadorForm: FormGroup;
+  arrendatarioForm: FormGroup;
   successMessage = '';
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private arrendadorService: ArrendadorService) {
-    this.arrendadorForm = this.fb.group({
+  constructor(private fb: FormBuilder, private arrendatarioService: ArrendatarioService) {
+    this.arrendatarioForm = this.fb.group({
       cedula: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
@@ -29,19 +29,19 @@ export class ArrendadorCreateComponent {
   }
 
   async onSubmit(): Promise<void> {
-    if (this.arrendadorForm.invalid) {
-      this.arrendadorForm.markAllAsTouched();
+    if (this.arrendatarioForm.invalid) {
+      this.arrendatarioForm.markAllAsTouched();
       return;
     }
 
-    const arrendadorData: ArrendadorCreate = this.arrendadorForm.value;
+    const arrendatarioData: ArrendatarioCreate = this.arrendatarioForm.value;
 
     try {
-      const res = await this.arrendadorService.createArrendador(arrendadorData);
+      const res = await this.arrendatarioService.createArrendatario(arrendatarioData);
       if (res) {
         this.successMessage = 'Cuenta creada correctamente! Revisa tu correo para activar tu cuenta.';
         this.errorMessage = '';
-        this.arrendadorForm.reset();
+        this.arrendatarioForm.reset();
       } else {
         this.errorMessage = 'No se pudo crear tu cuenta. Intenta nuevamente.';
         this.successMessage = '';
@@ -53,7 +53,7 @@ export class ArrendadorCreateComponent {
   }
 
   isInvalid(controlName: string): boolean {
-    const control = this.arrendadorForm.get(controlName);
+    const control = this.arrendatarioForm.get(controlName);
     return !!control && control.invalid && (control.dirty || control.touched);
   }
 }

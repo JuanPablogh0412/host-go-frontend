@@ -1,0 +1,35 @@
+<div class="login-background">
+    <div class="login-container">
+      <h2>Iniciar Sesión</h2>
+  
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group" [ngClass]="{'error-field': isInvalid('correo')}">
+          <label for="correo">Correo electrónico</label>
+          <input id="correo" type="email" formControlName="correo" placeholder="tu@javeriana.edu.co"/>
+          <small *ngIf="isInvalid('correo')">
+            {{ form.get('correo')?.hasError('required') ? 'El correo es obligatorio.' : 'Ingrese un correo válido.' }}
+          </small>
+        </div>
+  
+        <div class="form-group" [ngClass]="{'error-field': isInvalid('contrasena')}">
+          <label for="contrasena">Contraseña</label>
+          <input id="contrasena" type="password" formControlName="contrasena" placeholder="Mínimo 8 caracteres"/>
+          <small *ngIf="isInvalid('contrasena')">
+            {{ form.get('contrasena')?.hasError('required') ? 'La contraseña es obligatoria.' : 'Mínimo 8 caracteres.' }}
+          </small>
+        </div>
+  
+        <button type="submit" [disabled]="form.invalid">Entrar</button>
+      </form>
+  
+      <div *ngIf="errorMessage" class="message error">
+        {{ errorMessage }}
+      </div>
+  
+      <p class="to-register">
+        ¿No tienes cuenta?
+        <a routerLink="/crear-cuenta">Regístrate aquí</a>
+      </p>
+    </div>
+  </div>
+  
