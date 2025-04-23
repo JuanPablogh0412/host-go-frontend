@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PropiedadService } from '../../../services/propiedad.service';
+import { PropiedadService } from '../../../services/propiedad/propiedad.service';
 import { Propiedad } from '../../../models/propiedad.model';
 import { PropiedadCardComponent } from '../propiedad-card/propiedad-card.component';
 
