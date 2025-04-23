@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { Arrendatario } from '../models/arrendatario.model';
-import { ArrendatarioCreate } from '../models/arrendatario-create.model';
+import { Arrendatario } from '../../models/arrendatario.model';
+import { ArrendatarioCreate } from '../../models/arrendatario-create.model';
 
 @Injectable({
   providedIn: 'root'
