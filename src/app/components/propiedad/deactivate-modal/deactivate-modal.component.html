@@ -1,1 +1,13 @@
-<p>deactivate-modal works!</p>
+<div class="modal-backdrop">
+    <div class="modal-content">
+      <p>¿Confirmas desactivar esta propiedad?</p>
+  
+      <div class="actions">
+        <button (click)="confirm()">Sí</button>
+        <button (click)="cancel()">No</button>
+      </div>
+  
+      <div class="message error" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </div>
+  </div>
+  

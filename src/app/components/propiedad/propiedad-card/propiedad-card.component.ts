@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Propiedad } from '../../../models/propiedad.model';
+import { Propiedad } from '../../../models/propiedad/propiedad.model';
 
 @Component({
   selector: 'app-propiedad-card',

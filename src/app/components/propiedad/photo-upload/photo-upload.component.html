@@ -1,1 +1,13 @@
-<p>photo-upload works!</p>
+<div class="upload-container">
+    <h2>Subir Fotos</h2>
+    <input
+      type="file"
+      (change)="onFileChange($event)"
+      multiple
+      accept="image/*" />
+    <button (click)="onUpload()" [disabled]="!files.length">Subir</button>
+  
+    <div class="message success" *ngIf="successMessage">{{ successMessage }}</div>
+    <div class="message error"   *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+  

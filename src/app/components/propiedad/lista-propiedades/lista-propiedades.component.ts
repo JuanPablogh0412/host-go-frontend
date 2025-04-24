@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PropiedadService } from '../../../services/propiedad/propiedad.service';
-import { Propiedad } from '../../../models/propiedad.model';
+import { Propiedad } from '../../../models/propiedad/propiedad.model';
 import { PropiedadCardComponent } from '../propiedad-card/propiedad-card.component';
 
 @Component({
@@ -13,12 +13,18 @@ import { PropiedadCardComponent } from '../propiedad-card/propiedad-card.compone
 })
 export class ListaPropiedadesComponent implements OnInit {
   propiedades: Propiedad[] = [];
+  loading = true;
+  errorMessage = '';
 
   constructor(private propiedadService: PropiedadService) {}
 
-  ngOnInit(): void {
-    this.propiedadService.obtenerPropiedades().then((res) => {
-      this.propiedades = res;
-    });
+  async ngOnInit(): Promise<void> {
+    try {
+      this.propiedades = await this.propiedadService.obtenerPropiedades();
+    } catch {
+      this.errorMessage = 'No se pudieron cargar las propiedades.';
+    } finally {
+      this.loading = false;
+    }
   }
 }
