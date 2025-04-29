@@ -1,0 +1,12 @@
+<div class="container" *ngIf="comentarios.length > 0">
+    <h2>calificaciones de "{{usuario}}"</h2>
+
+    <div *ngFor="let comentario of comentarios" class="comentario">
+        <h4>Estrellas: {{comentario.estrellas}}</h4>
+        <p>Comentario: {{comentario.comentario}}</p>
+    </div>
+</div>
+
+<div class="container" *ngIf="comentarios.length === 0">
+    <p>No hay comentarios de esta propiedad</p>
+</div>

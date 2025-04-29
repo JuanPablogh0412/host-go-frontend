@@ -1,0 +1,16 @@
+<div class = "calificacion-container">
+    <h2>Calificar propiedad :{{nombrePropiedad}}</h2>
+    <h2>En: {{ubicacion}}</h2>
+    
+    <div class = "campoCalificacion">
+        <label for="estrellas">Estrellas:</label>
+        <select id="estrellas" [(ngModel)] ="calificacion.estrellas">
+            <option *ngFor="let estrella of[1, 2, 3, 4, 5]" [value] = "estrella">{{estrella}}</option>
+        </select>
+    </div>
+    <div class = " campoComentario">
+        <label for = "comentario">Comentario:</label><br/>
+        <textarea id = "comentario" [(ngModel)]="calificacion.comentario" rows = "4" cols = "40" placeholder="Escribe tu opinión...."></textarea>
+    </div>
+    <button (click) = "enviarCalificacion()">Enviar Calificación</button>
+</div>
