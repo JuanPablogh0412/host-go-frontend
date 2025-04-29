@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+<<<<<<< HEAD
 import { ArrendadorService } from '../../../services/arrendador/arrendador.service';
+=======
+import { ArrendadorService }
+  from '../../../services/arrendador/arrendador.service';
+>>>>>>> 7302099 (funciona ng serve)
 import { ArrendadorCreate } from '../../../models/arrendador-create.model';
 import { CommonModule } from '@angular/common';
 

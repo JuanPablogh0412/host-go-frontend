@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -40,4 +41,16 @@ export class PhotoUploadComponent implements OnInit {
       this.errorMessage = 'Error al subir fotos.';
     }
   }
+=======
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-photo-upload',
+  imports: [],
+  templateUrl: './photo-upload.component.html',
+  styleUrl: './photo-upload.component.css'
+})
+export class PhotoUploadComponent {
+
+>>>>>>> 7302099 (funciona ng serve)
 }

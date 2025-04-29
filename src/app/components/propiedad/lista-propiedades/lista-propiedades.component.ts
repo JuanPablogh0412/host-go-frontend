@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PropiedadService } from '../../../services/propiedad/propiedad.service';
+<<<<<<< HEAD
 import { Propiedad } from '../../../models/propiedad/propiedad.model';
+=======
+import { Propiedad } from '../../../models/propiedad.model';
+>>>>>>> 7302099 (funciona ng serve)
 import { PropiedadCardComponent } from '../propiedad-card/propiedad-card.component';
 
 @Component({

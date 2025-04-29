@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ArrendatarioService } from '../../../services/arrendatario.service';
+
+import { ArrendatarioService } from '../../../services/arrendatario/arrendatario.service';
+
 import { ArrendatarioCreate } from '../../../models/arrendatario-create.model';
 import { CommonModule } from '@angular/common';
 

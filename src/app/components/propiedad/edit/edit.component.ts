@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -74,4 +75,16 @@ export class PropiedadEditComponent implements OnInit {
       this.errorMessage = 'Error al actualizar la propiedad.';
     }
   }
+=======
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-edit',
+  imports: [],
+  templateUrl: './edit.component.html',
+  styleUrl: './edit.component.css'
+})
+export class EditComponent {
+
+>>>>>>> 7302099 (funciona ng serve)
 }

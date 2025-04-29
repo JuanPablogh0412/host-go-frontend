@@ -17,12 +17,15 @@
     border-radius: 16px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   }
+<<<<<<< HEAD
 
   .form-container { max-width: 600px; margin: auto; padding: 20px; }
 .message { margin-top: 15px; padding: 10px; }
 .success { background: #e3fcec; color: #2e7d32; }
 .error { background: #fdecea; color: #c62828; }
 
+=======
+>>>>>>> 7302099 (funciona ng serve)
   
   /* Título */
   .registro-container h2 {
