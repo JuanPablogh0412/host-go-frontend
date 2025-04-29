@@ -1,0 +1,54 @@
+<div class="upload-container">
+  <div class="header">
+    <i class="icon fas fa-cloud-upload-alt"></i>
+    <h2>Completa tu propiedad con fotos</h2>
+    <p class="property-id">ID: #{{ propiedadId }}</p>
+  </div>
+
+  <div class="drop-zone" 
+       (dragover)="onDragOver($event)" 
+       (dragleave)="onDragLeave($event)" 
+       (drop)="onDrop($event)"
+       [class.dragover]="isDragging">
+    <i class="fas fa-images"></i>
+    <p>Arrastra tus fotos aquí o <span>selecciona archivos</span></p>
+    <input type="file" hidden multiple (change)="onFilesSelected($event)" #fileInput>
+  </div>
+
+  <div class="preview-grid" *ngIf="archivos.length">
+    <div class="preview-item" *ngFor="let file of archivos; let i = index">
+      <img [src]="getPreview(file)">
+      <div class="file-info">
+        <span class="file-name">{{ file.name }}</span>
+        <span class="file-size">{{ formatFileSize(file.size) }}</span>
+      </div>
+      <button class="remove-btn" (click)="removeFile(i)">&times;</button>
+    </div>
+  </div>
+
+  <div class="progress" *ngIf="subiendo">
+    <div class="progress-bar" [style.width]="progress + '%'"></div>
+    <span>{{ progress }}% Completado</span>
+  </div>
+
+  <div class="action-buttons">
+    <button class="upload-btn" (click)="fileInput.click()" [disabled]="subiendo">
+      <i class="fas fa-plus"></i> Agregar más fotos
+    </button>
+    
+    <button class="primary-btn" (click)="onUpload()" [disabled]="subiendo || !archivos.length">
+      <i class="fas fa-upload"></i> {{ subiendo ? 'Subiendo...' : 'Subir ' + archivos.length + ' Fotos' }}
+    </button>
+  </div>
+
+  <div class="status-messages">
+    <div *ngFor="let msg of mensajes" class="message" [class.success]="msg.includes('✅')" [class.error]="msg.includes('❌')">
+      <i class="icon" [class.fa-check-circle]="msg.includes('✅')" [class.fa-times-circle]="msg.includes('❌')"></i>
+      {{ msg.replace('✅', '').replace('❌', '') }}
+    </div>
+  </div>
+
+  <button class="finish-btn" (click)="onFinish()" [disabled]="subiendo">
+    <i class="fas fa-check"></i> Finalizar y ver propiedad
+  </button>
+</div>

@@ -1,0 +1,136 @@
+<ng-template #cargandoTpl>
+    <div class="loading">Cargando...</div>
+  </ng-template>
+  
+  <ng-template #errorTpl>
+    <div class="msg error">{{ error }}</div>
+  </ng-template>
+  
+  <div class="detail-bg" *ngIf="!cargando; else cargandoTpl">
+    <ng-container *ngIf="!error; else errorTpl">
+        <div class="detail-card">
+            <div class="propiedad-header">
+                <h1>
+                    {{ propiedad!.nombre }}
+                </h1>
+                <p class="ubicacion">
+                    <i class="fa-solid fa-location-dot"></i>
+                    {{ propiedad!.departamento }}, {{ propiedad!.municipio }}
+                </p>
+            </div>
+    
+            <div class="photo-carousel">
+                <div class="slides-container">
+                  <img 
+                    *ngFor="let url of propiedad?.fotos; let i = index"
+                    [src]="url" 
+                    [class.active]="i === activeSlideIndex"
+                    alt="Foto {{i + 1}} de {{propiedad?.nombre}}"
+                    class="slide">
+                </div>
+              
+                <div class="carousel-controls">
+                  <button class="control-btn prev" (click)="prevSlide()">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  
+                  <div class="pagination-dots">
+                    <span 
+                      *ngFor="let _ of propiedad?.fotos; let i = index"
+                      [class.active]="i === activeSlideIndex"
+                      (click)="goToSlide(i)">
+                    </span>
+                  </div>
+                  
+                  <button class="control-btn next" (click)="nextSlide()">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+    
+            <p class="descripcion">
+                <i class="fa-solid fa-align-left"></i>
+                {{ propiedad!.descripcion }}
+            </p>
+    
+            <div class="detalles-grid">
+                <div class="detalle-item">
+                    <i class="fa-solid fa-bed"></i>
+                    <div>
+                        <h4>{{ propiedad!.habitaciones }} Habitaciones</h4>
+                        <b><small>Capacidad: {{ propiedad!.capacidad }} personas</small></b>
+                    </div>
+                </div>
+                
+                <div class="detalle-item">
+                    <i class="fa-solid fa-bath"></i>
+                    <div>
+                        <h4>{{ propiedad!.banos }} Baños</h4>
+                    </div>
+                </div>
+                
+                <div *ngIf="propiedad!.permiteMascotas" class="detalle-item">
+                    <i class="fa-solid fa-paw"></i>
+                    <div>
+                        <h4>Mascotas</h4>
+                        <small>Permitidas</small>
+                    </div>
+                </div>
+                
+                <div *ngIf="propiedad!.tienePiscina" class="detalle-item">
+                    <i class="fa-solid fa-water-ladder"></i>
+                    <div>
+                        <h4>Piscina</h4>
+                        <small>Privada</small>
+                    </div>
+                </div>
+                
+                <div *ngIf="propiedad!.tieneAsador" class="detalle-item">
+                    <i class="fa-solid fa-fire"></i>
+                    <div>
+                        <h4>Área de BBQ</h4>
+                        <small>Asador profesional</small>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="precio-section">
+                <div class="precio">
+                    ${{ propiedad!.valorNoche | number }}
+                    <small>/ noche</small>
+                </div>
+            </div>
+  
+            <div *ngIf="userRole==='ARRENDATARIO'" class="reserva-section">
+              <h2>Solicitar Reserva</h2>
+              <form [formGroup]="reservaForm" (ngSubmit)="submitReserva()">
+                <div class="field-group">
+                  <label>Check-in</label>
+                  <input type="date" formControlName="fechaInicio"/>
+                  <small *ngIf="isInvalid('fechaInicio')">Requerido</small>
+                </div>
+                <div class="field-group">
+                  <label>Check-out</label>
+                  <input type="date" formControlName="fechaFin"/>
+                  <small *ngIf="isInvalid('fechaFin')">Requerido</small>
+                </div>
+                <div class="field-group">
+                  <label>Personas</label>
+                  <input type="number" min="1" formControlName="cantidadPer"/>
+                  <small *ngIf="isInvalid('cantidadPer')">Mínimo 1</small>
+                </div>
+                <button type="submit" [disabled]="reservaForm.invalid">Enviar Solicitud</button>
+              </form>
+              <p class="msg success" *ngIf="reservaSuccess">{{ reservaSuccess }}</p>
+              <p class="msg error"   *ngIf="reservaError">{{ reservaError }}</p>
+            </div>
+            
+
+        <div *ngIf="userRole === 'ARRENDADOR'" class="owner-actions">
+          <button (click)="editar()">Editar</button>
+          <button (click)="verSolicitudes()">Ver Solicitudes</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  

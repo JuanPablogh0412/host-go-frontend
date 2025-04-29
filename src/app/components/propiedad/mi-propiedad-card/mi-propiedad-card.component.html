@@ -1,0 +1,34 @@
+<a
+  class="house-link"
+  [routerLink]="['/propiedad', propiedad.propiedadId]"
+>
+<div class="house">
+  <div class="house-img">
+    <img
+      *ngIf="propiedad.fotos?.length; else placeholder"
+      [src]="propiedad.fotos?.[0] || 'placeholder.png'"
+      alt="Foto {{ propiedad.nombre }}"
+    />
+    <ng-template #placeholder>
+      <div class="placeholder">
+        <img src="assets/icon-home.svg" alt="Sin imagen" />
+      </div>
+    </ng-template>
+  </div>
+  <div class="house-info">
+    <h3>{{ propiedad.nombre }}</h3>
+    <p>{{ propiedad.departamento }}, {{ propiedad.municipio }}</p>
+    <div class="house-price">
+      <h4>${{ propiedad.valorNoche | number }} <span>/ noche</span></h4>
+    </div>
+  </div>
+  <div class="action-buttons">
+    <button class="action-btn" title="Editar">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button class="action-btn" title="Ver detalles">
+      <i class="fas fa-external-link-alt"></i>
+    </button>
+  </div>
+</div>
+</a>

@@ -5,9 +5,7 @@
     </a>
 
     <ul class="nav-links">
-      <li><a routerLink="/about">About</a></li>
-      <li><a routerLink="/services">Services</a></li>
-      <li><a routerLink="/contact">Contact</a></li>
+      <li><a routerLink="/lista-propiedades">Propiedades</a></li>
     </ul>
 
     <div *ngIf="!isLoggedIn" class="auth-buttons">
@@ -28,6 +26,10 @@
         <li *ngIf="userRole==='ARRENDADOR'" class="menu-item">
           <i class="fa-solid fa-house-chimney"></i>
           <a routerLink="/mis-propiedades">Mis propiedades</a>
+        </li>
+        <li *ngIf="userRole==='ARRENDADOR'" class="menu-item">
+          <i class="fa-solid fa-plus"></i>
+          <a routerLink="/crear-propiedad">Crear Propiedad</a>
         </li>
         
         <li *ngIf="userRole==='ARRENDATARIO'" class="menu-item">

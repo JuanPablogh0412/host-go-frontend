@@ -1,0 +1,35 @@
+<div class="mis-solicitudes-container">
+  <h1>
+      <i class="fa-solid fa-file-lines"></i>
+      Mis Solicitudes
+  </h1>
+  
+  <ng-container *ngIf="cargando">
+      <div class="loading-container">
+          <div class="loading-dot"></div>
+          <div class="loading-dot"></div>
+          <div class="loading-dot"></div>
+      </div>
+  </ng-container>
+  
+  <ng-container *ngIf="!cargando && error">
+      <div class="msg error">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          {{ error }}
+      </div>
+  </ng-container>
+  
+  <ng-container *ngIf="!cargando && !error && solicitudes.length === 0">
+      <div class="msg info">
+          <i class="fa-solid fa-info-circle"></i>
+          Aún no has realizado ninguna solicitud
+      </div>
+  </ng-container>
+  
+  <div class="solicitudes-grid">
+      <app-solicitud-card
+          *ngFor="let sol of solicitudes"
+          [solicitud]="sol">
+      </app-solicitud-card>
+  </div>
+</div>

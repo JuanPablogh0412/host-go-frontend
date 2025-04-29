@@ -20,9 +20,8 @@ export interface LoginResponse {
 export class AuthService {
   private baseUrl = 'http://localhost:8080/auth';
 
-  // 👇 Esto es el observable que el header se va a suscribir
   private authState = new BehaviorSubject<boolean>(this.hasToken());
-  authState$ = this.authState.asObservable(); // expuesto públicamente
+  authState$ = this.authState.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -37,7 +36,7 @@ export class AuthService {
           localStorage.setItem('jwt', res.token);
           if (res.arrendador) localStorage.setItem('user', JSON.stringify(res.arrendador));
           if (res.arrendatario) localStorage.setItem('user', JSON.stringify(res.arrendatario));
-          this.authState.next(true); // 🔥 Notificar a todos que hubo login
+          this.authState.next(true);
         }
       })
     );
@@ -46,7 +45,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('jwt');
     localStorage.removeItem('user');
-    this.authState.next(false); // 🔥 Notificar logout
+    this.authState.next(false);
     this.router.navigate(['/login']);
   }
 

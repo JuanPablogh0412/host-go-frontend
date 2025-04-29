@@ -1,0 +1,78 @@
+<div class="create-bg">
+    <div class="form-card">
+      <h2>Crear Propiedad</h2>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="field">
+            <label>Nombre</label>
+            <input formControlName="nombre" />
+            <small *ngIf="isInvalid('nombre')">Requerido</small>
+          </div>
+          <div class="field">
+            <label>Departamento</label>
+            <select formControlName="departamento" (change)="onDeptoChange()">
+              <option value="">--Selecciona--</option>
+              <option *ngFor="let d of departamentos">{{ d }}</option>
+            </select>
+            <small *ngIf="isInvalid('departamento')">Requerido</small>
+          </div>
+          <div class="field">
+            <label>Municipio</label>
+            <select formControlName="municipio">
+              <option value="">--Selecciona--</option>
+              <option *ngFor="let m of municipios">{{ m }}</option>
+            </select>
+            <small *ngIf="isInvalid('municipio')">Requerido</small>
+          </div>
+        </div>
+  
+        <div class="field">
+          <label>Tipo de Ingreso</label>
+          <input formControlName="tipoIngreso" placeholder="Ej: Secundaria" />
+          <small *ngIf="isInvalid('tipoIngreso')">Requerido</small>
+        </div>
+  
+        <div class="field">
+          <label>Descripción</label>
+          <textarea formControlName="descripcion"></textarea>
+          <small *ngIf="isInvalid('descripcion')">Requerido</small>
+        </div>
+  
+        <div class="row">
+          <div class="field">
+            <label>Capacidad</label>
+            <input type="number" formControlName="capacidad" />
+            <small *ngIf="isInvalid('capacidad')">>=1</small>
+          </div>
+          <div class="field">
+            <label>Habitaciones</label>
+            <input type="number" formControlName="habitaciones" />
+            <small *ngIf="isInvalid('habitaciones')">>=1</small>
+          </div>
+          <div class="field">
+            <label>Baños</label>
+            <input type="number" formControlName="banos" />
+            <small *ngIf="isInvalid('banos')">>=1</small>
+          </div>
+        </div>
+  
+        <div class="checkboxes">
+          <label><input type="checkbox" formControlName="permiteMascotas" /> Mascotas</label>
+          <label><input type="checkbox" formControlName="tienePiscina" /> Piscina</label>
+          <label><input type="checkbox" formControlName="tieneAsador" /> Asador</label>
+        </div>
+  
+        <div class="field">
+          <label>Valor por noche</label>
+          <input type="number" formControlName="valorNoche" />
+          <small *ngIf="isInvalid('valorNoche')">>0</small>
+        </div>
+  
+        <button type="submit" [disabled]="form.invalid">Subir fotos</button>
+      </form>
+  
+      <div *ngIf="success" class="msg success">{{ success }}</div>
+      <div *ngIf="error" class="msg error">{{ error }}</div>
+    </div>
+  </div>
+  

@@ -6,6 +6,12 @@ import { CrearCuentaComponent } from './shared/crear-cuenta/crear-cuenta.compone
 import { ArrendatarioCreateComponent } from './components/arrendatario/create/create.component';
 import { ActivarCuentaComponent } from './shared/activar-cuenta/activar-cuenta.component';
 import { LoginComponent } from './components/auth/login/login.component';   
+import { PropiedadCreateComponent } from './components/propiedad/create/create.component';
+import { FotoUploadComponent } from './components/propiedad/foto-upload/foto-upload.component';
+import { MisPropiedadesComponent } from './components/propiedad/mis-propiedades/mis-propiedades.component';
+import { PropiedadDetailComponent } from './components/propiedad/detail/propiedad-detail/propiedad-detail.component';
+import { MisSolicitudesComponent } from './components/solicitud/mis-solicitudes/mis-solicitudes.component';
+import { SolicitudesPropiedadComponent } from './components/solicitud/solicitudes-propiedad/solicitudes-propiedad.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -14,6 +20,12 @@ export const routes: Routes = [
     { path: 'crear-arrendatario', component: ArrendatarioCreateComponent },
     { path: 'activar-cuenta', component: ActivarCuentaComponent },
     { path : 'login', component: LoginComponent },
+    { path: 'crear-propiedad', component: PropiedadCreateComponent },
+    { path: 'propiedad/:id/fotos', component: FotoUploadComponent },
+    {path: 'mis-propiedades', component: MisPropiedadesComponent},
     { path: 'lista-propiedades', component: ListaPropiedadesComponent },
+    { path: 'propiedad/:id', component: PropiedadDetailComponent },
+    { path: 'mis-solicitudes', component: MisSolicitudesComponent },
+    { path: 'propiedad/:id/solicitudes', component: SolicitudesPropiedadComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

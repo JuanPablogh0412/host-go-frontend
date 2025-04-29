@@ -1,0 +1,35 @@
+<div class="solicitudes-container">
+  <div class="header">
+    <h1><i class="fa-regular fa-file-lines"></i>Solicitudes de la propiedad</h1>
+    <p class="subtitle">Gestiona todas las solicitudes de reserva</p>
+  </div>
+
+  <div class="content">
+    <div *ngIf="cargando" class="loading-state">
+      <div class="loading-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <p>Cargando solicitudes...</p>
+    </div>
+
+    <div *ngIf="!cargando && error" class="error-state">
+      <i class="fa-solid fa-shield-halved"></i>
+      <p>{{ error }}</p>
+    </div>
+
+    <div *ngIf="!cargando && !error && solicitudes.length === 0" class="empty-state">
+      <i class="fa-regular fa-cloud"></i>
+      <p>No hay solicitudes pendientes</p>
+      <small>Las nuevas solicitudes aparecerán aquí</small>
+    </div>
+
+    <div class="solicitudes-grid">
+      <app-solicitud-propiedad-card
+        *ngFor="let sol of solicitudes"
+        [solicitud]="sol">
+      </app-solicitud-propiedad-card>
+    </div>
+  </div>
+</div>

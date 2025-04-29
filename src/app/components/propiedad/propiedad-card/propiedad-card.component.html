@@ -1,3 +1,7 @@
+<a
+  class="house-link"
+  [routerLink]="['/propiedad', propiedad.propiedadId]"
+>
 <div class="house">
     <div class="house-img">
         <img *ngIf="propiedad.fotos?.length" [src]="propiedad.fotos?.[0]" alt="Imagen de la propiedad" />
@@ -24,4 +28,4 @@
       </div>
     </div>
   </div>
-  
+</a>

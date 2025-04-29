@@ -1,0 +1,46 @@
+<div class="solicitud-card">
+  <h3>
+      <i class="fa-solid fa-house-chimney"></i>
+      {{ solicitud.propiedad.nombre }}
+  </h3>
+  
+  <div class="solicitud-details">
+      <div class="detail-item">
+          <strong>Check-in</strong>
+          <span>{{ solicitud.fechaInicio | date:'dd MMM yyyy' }}</span>
+      </div>
+      
+      <div class="detail-item">
+          <strong>Check-out</strong>
+          <span>{{ solicitud.fechaFin | date:'dd MMM yyyy' }}</span>
+      </div>
+      
+      <div class="detail-item">
+          <strong>Personas</strong>
+          <span>{{ solicitud.cantidadPer }}</span>
+      </div>
+      
+      <div class="detail-item">
+          <strong>Costo total</strong>
+          <span>${{ solicitud.costoTotal | number }}</span>
+      </div>
+  </div>
+
+  <div class="status-badge" [ngClass]="{
+      'status-pending': solicitud.status === 'INACTIVE',
+      'status-accepted': solicitud.status === 'ACTIVE',
+      'status-rejected': solicitud.status === 'DELETED'
+  }">
+      <i class="fa-solid" [ngClass]="{
+          'fa-clock': solicitud.status === 'INACTIVE',
+          'fa-check-circle': solicitud.status === 'ACTIVE',
+          'fa-times-circle': solicitud.status === 'DELETED'
+      }"></i>
+      {{ getStatusText(solicitud.status) }}
+  </div>
+
+  <a [routerLink]="['/propiedad', solicitud.propiedad.propiedadId]" class="detalle-link">
+      Ver detalles de la propiedad
+      <i class="fa-solid fa-arrow-right"></i>
+  </a>
+</div>
