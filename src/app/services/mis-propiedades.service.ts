@@ -16,7 +16,7 @@ interface BackendResumen {
   providedIn: 'root'     // <-- esto lo registra globalmente
 })
 export class MisPropiedadesService {
-  private baseUrl = 'http://localhost:8080/Propiedad/misPropiedades';
+  private baseUrl = 'http://10.43.103.121/Propiedad/misPropiedades';
 
   async obtenerMisPropiedades(): Promise<PropiedadResumen[]> {
     const token = localStorage.getItem('jwt');

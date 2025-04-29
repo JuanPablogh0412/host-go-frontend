@@ -8,7 +8,7 @@ import { ArrendadorCreate } from '../models/arrendador-create.model';
 })
 export class ArrendadorService {
 
-  private baseUrl = 'http://localhost:8080/Arrendador';
+  private baseUrl = 'http://10.43.103.121/Arrendador';
 
   constructor() { }
 

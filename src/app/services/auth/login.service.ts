@@ -18,7 +18,7 @@ export interface LoginResponse {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private baseUrl = 'http://localhost:8080/auth';
+  private baseUrl = 'http://10.43.103.121/auth';
 
   private authState = new BehaviorSubject<boolean>(this.hasToken());
   authState$ = this.authState.asObservable();

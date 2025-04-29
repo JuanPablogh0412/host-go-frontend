@@ -6,7 +6,7 @@ import { AuthService } from './auth/login.service';
 
 @Injectable({ providedIn: 'root' })
 export class SolicitudService {
-  private baseUrl = 'http://localhost:8080/Solicitud';
+  private baseUrl = 'http://10.43.103.121/Solicitud';
 
   constructor(private auth: AuthService) {}
 

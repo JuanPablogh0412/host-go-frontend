@@ -14,18 +14,33 @@ import { MisSolicitudesComponent } from './components/solicitud/mis-solicitudes/
 import { SolicitudesPropiedadComponent } from './components/solicitud/solicitudes-propiedad/solicitudes-propiedad.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
-    {path: 'crear-cuenta', component: CrearCuentaComponent},
-    { path: 'crear-arrendador', component: ArrendadorCreateComponent },
-    { path: 'crear-arrendatario', component: ArrendatarioCreateComponent },
-    { path: 'activar-cuenta', component: ActivarCuentaComponent },
-    { path : 'login', component: LoginComponent },
-    { path: 'crear-propiedad', component: PropiedadCreateComponent },
-    { path: 'propiedad/:id/fotos', component: FotoUploadComponent },
-    {path: 'mis-propiedades', component: MisPropiedadesComponent},
-    { path: 'lista-propiedades', component: ListaPropiedadesComponent },
-    { path: 'propiedad/:id', component: PropiedadDetailComponent },
-    { path: 'mis-solicitudes', component: MisSolicitudesComponent },
-    { path: 'propiedad/:id/solicitudes', component: SolicitudesPropiedadComponent },
-    { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: '', component: HomeComponent },
+  { path: 'crear-cuenta', component: CrearCuentaComponent },
+  { path: 'crear-arrendador', component: ArrendadorCreateComponent },
+  { path: 'crear-arrendatario', component: ArrendatarioCreateComponent },
+  { path: 'activar-cuenta', component: ActivarCuentaComponent },
+  { path: 'login', component: LoginComponent },
+
+  { path: 'crear-propiedad', component: PropiedadCreateComponent },
+  { path: 'mis-propiedades', component: MisPropiedadesComponent },
+  { path: 'lista-propiedades', component: ListaPropiedadesComponent },
+  { path: 'mis-solicitudes', component: MisSolicitudesComponent },
+
+  {
+    path: 'propiedad/:id',
+    component: PropiedadDetailComponent,
+    data: { renderMode: 'client' }
+  },
+  {
+    path: 'propiedad/:id/fotos',
+    component: FotoUploadComponent,
+    data: { renderMode: 'client' }
+  },
+  {
+    path: 'propiedad/:id/solicitudes',
+    component: SolicitudesPropiedadComponent,
+    data: { renderMode: 'client' }
+  },
+
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

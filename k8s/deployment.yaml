@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: host-go-frontend
+  namespace: host-go        
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: host-go-frontend
+  template:
+    metadata:
+      labels:
+        app: host-go-frontend
+    spec:
+      containers:
+        - name: host-go-frontend
+          image: localhost:5000/host-go-frontend:latest
+          ports:
+            - containerPort: 80

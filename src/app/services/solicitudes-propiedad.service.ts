@@ -5,7 +5,7 @@ import { Solicitud } from '../models/solicitud.model';
 
 @Injectable({ providedIn: 'root' })
 export class SolicitudPropiedadService {
-  private baseUrl = 'http://localhost:8080/Solicitud/propiedad';
+  private baseUrl = 'http://10.43.103.121/Solicitud/propiedad';
 
   async obtenerPorPropiedad(propiedadId: number): Promise<Solicitud[]> {
     const token = localStorage.getItem('jwt')!;
@@ -24,7 +24,7 @@ export class SolicitudPropiedadService {
   async aceptarSolicitud(solicitudId: number): Promise<Solicitud> {
     const token = localStorage.getItem('jwt')!;
     const res = await axios.put<Solicitud>(
-      `http://localhost:8080/Solicitud/aceptar/${solicitudId}`,
+      `http://10.43.103.121/Solicitud/aceptar/${solicitudId}`,
       {},
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -34,7 +34,7 @@ export class SolicitudPropiedadService {
   async cancelarSolicitud(solicitudId: number): Promise<Solicitud> {
     const token = localStorage.getItem('jwt')!;
     const res = await axios.put<Solicitud>(
-      `http://localhost:8080/Solicitud/cancelar/${solicitudId}`,
+      `http://10.43.103.121/Solicitud/cancelar/${solicitudId}`,
       {},
       { headers: { Authorization: `Bearer ${token}` } }
     );

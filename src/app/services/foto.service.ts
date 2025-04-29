@@ -6,7 +6,7 @@ import { Foto } from '../models/foto.model';
   providedIn: 'root'
 })
 export class FotoService {
-  private base = 'http://localhost:8080/Foto';
+  private base = 'http://10.43.103.121/Foto';
 
   async subirFoto(propiedadId: number, archivo: File): Promise<Foto> {
     const token = localStorage.getItem('jwt');

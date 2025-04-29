@@ -5,7 +5,7 @@ import { Propiedad } from '../models/propiedad.model';
 
 @Injectable({ providedIn: 'root' })
 export class PropiedadService {
-  private baseUrl = 'http://localhost:8080/Propiedad';
+  private baseUrl = 'http://10.43.103.121/Propiedad';
   private daneUrl = 'https://www.datos.gov.co/resource/xdk5-pm3f.json';
 
   /** Trae todas las propiedades */
