@@ -1,7 +1,22 @@
-<app-header></app-header>
 
-<main class="content">
-  <router-outlet></router-outlet>
-</main>
+<b>Formulario</b><br/>
 
-<app-footer></app-footer>
+<app-calificar-usuario [nombreUsuario]="'Juan'"></app-calificar-usuario>
+<button class="boton-comentario" (click)="toggleComentarios2()">{{mostrarComentarios2 ? "Ocultar comentarios":"Ver comentarios"}}</button>
+<div *ngIf="mostrarComentarios2">
+    <app-calificacion
+    [usuario]="'Juan'">
+    </app-calificacion>
+</div>
+
+
+<app-calificar-propiedad  [nombrePropiedad]="'Casa de playa'" [ubicacion]="'Borde del rio'"></app-calificar-propiedad>
+<button class="boton-comentario" (click)="toggleComentarios1()">
+    {{mostrarComentarios1 ? 'Ocultar Comentarios':'Ver comentarios'}}
+</button>
+<div *ngIf="mostrarComentarios1">
+    <app-cali-propiedad 
+    [nombrePropiedad]="'Casa de playa'" 
+    [Ubicacion]="'Borde del rio'">
+    </app-cali-propiedad>
+</div>

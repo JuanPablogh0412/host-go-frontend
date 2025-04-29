@@ -17,16 +17,18 @@ export class CalificacionComponent implements OnInit {
   constructor(private CalificacionService:CalificacionService){}
 
   ngOnInit(): void {
-      if(this.usuario){
-        this.CalificacionService.getComentarios(this.usuario)
-          .subscribe({
-            next: (data) =>{
-              this.comentarios = data;
-            },
-            error: (err) =>{
-              console.error("Error obteniendo comentarios", err);
-            }
-          })
-      }
+    if(this.usuario){
+      this.CalificacionService.getComentarios(this.usuario)
+        .subscribe({
+          next: (data) =>{
+            this.comentarios = data;
+          },
+          error: (err) =>{
+            console.error("Error obteniendo comentarios", err);
+          }
+        })
+    }
   }
+
+  
 }

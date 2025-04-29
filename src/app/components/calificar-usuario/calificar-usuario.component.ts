@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CalificacionUsuario } from '../../models/calificacion-usuario';
 import axios from 'axios';
+import { CalificacionService } from '../../services/calificacion.service';
 
 @Component({
   standalone: true,
@@ -17,20 +18,20 @@ export class CalificarUsuarioComponent {
   calificacion: CalificacionUsuario = new CalificacionUsuario({
     estrellas: 0,
     comentario: '',
-    nombreUsuario: ''
+    usuario: ''
   });
 
   estrellasDisponibles = [1,2,3,4,5];
 
   async enviarCalificacion(){
-    this.calificacion.nombreUsuario = this.nombreUsuario;
+    this.calificacion.usuario = this.nombreUsuario;
 
     try{
       const response = await axios.post('http://localhost:8081/Calificacion/calificar', null,{
         params:{
           estrellas:this.calificacion.estrellas,
           comentario:this.calificacion.comentario,
-          nombreUsuario:this.nombreUsuario
+          usuario:this.nombreUsuario
         }
       });
       console.log("Calificacion enviada correctamente",response.data);

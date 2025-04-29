@@ -1,0 +1,21 @@
+.boton-comentario{
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 12px;
+    background-color: #ffad8f;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 3px 0 #b5370e;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3 ease ;
+}
+
+.boton-comentario:hover{
+    background-color: #ffb9a0;
+}

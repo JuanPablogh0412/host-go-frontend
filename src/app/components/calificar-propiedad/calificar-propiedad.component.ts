@@ -23,7 +23,6 @@ export class CalificarPropiedadComponent {
     ubicacion: ''
   });
   estrellasDisponibles = [1,2,3,4,5];
-
   async enviarCalificacion(){
     this.calificacion.nombrePropiedad = this.nombrePropiedad;
     this.calificacion.ubicacion = this.ubicacion;
