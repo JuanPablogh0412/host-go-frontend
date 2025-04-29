@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: host-go-frontend
-          image: localhost:5000/host-go-frontend:latest
+          image: localhost:5000/test:latest
           ports:
             - containerPort: 80
