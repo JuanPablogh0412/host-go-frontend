@@ -14,7 +14,7 @@ RUN sed -i '/LoadModule rewrite_module/s/^#//g' /usr/local/apache2/conf/httpd.co
 
 WORKDIR /usr/local/apache2/htdocs
 RUN rm -rf ./*
-COPY --from=builder /app/dist/host-go-frontend/browser/ .
+COPY --from=builder /app/dist/host-go-frontend/ .
 COPY .htaccess .
 
 EXPOSE 80
