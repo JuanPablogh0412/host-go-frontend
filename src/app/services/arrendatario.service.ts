@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Arrendatario } from '../models/arrendatario.model';
 import { ArrendatarioCreate } from '../models/arrendatario-create.model';
+import { AppSettings } from '../app-settings';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArrendatarioService {
 
-  private baseUrl = 'http://10.43.103.121/Arrendatario';
+  private baseUrl = `${AppSettings.baseUrl}/Arrendatario`;
 
   constructor() { }
 

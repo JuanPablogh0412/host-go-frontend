@@ -1,0 +1,25 @@
+<div class="calificar-container">
+    <h2>Calificar Propiedad</h2>
+  
+    <form [formGroup]="caliForm" (ngSubmit)="submit()">
+      <div class="field-group">
+        <label>Estrellas</label>
+        <select formControlName="estrellas">
+          <option *ngFor="let s of [1,2,3,4,5]" [value]="s">{{ s }} ★</option>
+        </select>
+        <small *ngIf="isInvalid('estrellas')">Selecciona entre 1 y 5 estrellas.</small>
+      </div>
+  
+      <div class="field-group">
+        <label>Comentario</label>
+        <textarea formControlName="comentario" rows="4"></textarea>
+        <small *ngIf="isInvalid('comentario')">El comentario es obligatorio.</small>
+      </div>
+  
+      <button type="submit" [disabled]="caliForm.invalid">Enviar Calificación</button>
+    </form>
+  
+    <p class="msg success" *ngIf="success">{{ success }}</p>
+    <p class="msg error"   *ngIf="error">{{ error }}</p>
+  </div>
+  

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AppSettings } from '../../app-settings';
 
 export interface LoginRequest {
   correo: string;
@@ -18,7 +19,7 @@ export interface LoginResponse {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private baseUrl = 'http://10.43.103.121/auth';
+  private baseUrl = `${AppSettings.baseUrl}/auth`;
 
   private authState = new BehaviorSubject<boolean>(this.hasToken());
   authState$ = this.authState.asObservable();

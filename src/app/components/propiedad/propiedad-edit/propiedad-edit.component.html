@@ -1,0 +1,165 @@
+<div class="edit-container" *ngIf="!loading; else cargandoTpl">
+  <div class="edit-card">
+    <div class="card-header">
+      <h1><i class="fa-solid fa-pen-to-square"></i>Editar Propiedad</h1>
+      <p>Actualiza los detalles de tu propiedad</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-section">
+        <h3><i class="fa-solid fa-circle-info"></i>Información Básica</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nombre de la propiedad</label>
+            <input formControlName="nombre" placeholder="Ej: Casa en la montaña">
+            <small *ngIf="isInvalid('nombre')"><i class="fa-solid fa-circle-exclamation"></i>Campo requerido</small>
+          </div>
+          
+          <div class="form-group">
+            <label>Departamento</label>
+            <div class="select-wrapper">
+              <select formControlName="departamento" (change)="onDeptoChange()">
+                <option value="">Seleccionar departamento</option>
+                <option *ngFor="let d of departamentos">{{ d }}</option>
+              </select>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <small *ngIf="isInvalid('departamento')"><i class="fa-solid fa-circle-exclamation"></i>Selección requerida</small>
+          </div>
+
+          <div class="form-group">
+            <label>Municipio</label>
+            <div class="select-wrapper">
+              <select formControlName="municipio">
+                <option value="">Seleccionar municipio</option>
+                <option *ngFor="let m of municipios">{{ m }}</option>
+              </select>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <small *ngIf="isInvalid('municipio')"><i class="fa-solid fa-circle-exclamation"></i>Selección requerida</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3><i class="fa-solid fa-house"></i>Detalles de la Propiedad</h3>
+        <div class="form-grid triple">
+          <div class="form-group">
+            <label>Capacidad</label>
+            <input type="number" formControlName="capacidad" min="1">
+            <small *ngIf="isInvalid('capacidad')"><i class="fa-solid fa-circle-exclamation"></i>Mínimo 1</small>
+          </div>
+
+          <div class="form-group">
+            <label>Habitaciones</label>
+            <input type="number" formControlName="habitaciones" min="1">
+            <small *ngIf="isInvalid('habitaciones')"><i class="fa-solid fa-circle-exclamation"></i>Mínimo 1</small>
+          </div>
+
+          <div class="form-group">
+            <label>Baños</label>
+            <input type="number" formControlName="banos" min="1">
+            <small *ngIf="isInvalid('banos')"><i class="fa-solid fa-circle-exclamation"></i>Mínimo 1</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3><i class="fa-solid fa-tags"></i>Características</h3>
+        <div class="features-grid">
+          <label class="feature-checkbox">
+            <input type="checkbox" formControlName="permiteMascotas">
+            <div class="checkbox-content">
+              <i class="fa-solid fa-paw"></i>
+              <span>Mascotas permitidas</span>
+            </div>
+          </label>
+
+          <label class="feature-checkbox">
+            <input type="checkbox" formControlName="tienePiscina">
+            <div class="checkbox-content">
+              <i class="fa-solid fa-water-ladder"></i>
+              
+              <span>Piscina privada</span>
+            </div>
+          </label>
+
+          <label class="feature-checkbox">
+            <input type="checkbox" formControlName="tieneAsador">
+            <div class="checkbox-content">
+              <i class="fa-solid fa-fire"></i>
+              <span>Área de BBQ</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3><i class="fa-solid fa-money-bill-wave"></i>Precio y Descripción</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Valor por noche</label>
+            <div class="price-input">
+              <span>$</span>
+              <input type="number" formControlName="valorNoche" min="1">
+            </div>
+            <small *ngIf="isInvalid('valorNoche')"><i class="fa-solid fa-circle-exclamation"></i>Valor inválido</small>
+          </div>
+
+          <div class="form-group">
+            <label>Tipo de ingreso</label>
+            <input formControlName="tipoIngreso" placeholder="Ej: Casa vacacional">
+            <small *ngIf="isInvalid('tipoIngreso')"><i class="fa-solid fa-circle-exclamation"></i>Campo requerido</small>
+          </div>
+
+          <div class="form-group full-width">
+            <label>Descripción</label>
+            <textarea formControlName="descripcion" rows="4" placeholder="Describe tu propiedad..."></textarea>
+            <small *ngIf="isInvalid('descripcion')"><i class="fa-solid fa-circle-exclamation"></i>Descripción requerida</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="primary-btn" [disabled]="form.invalid">
+          <i class="fa-solid fa-floppy-disk"></i>
+          Guardar Cambios
+        </button>
+        
+        <button type="button" class="danger-btn" (click)="onDesactivar()">
+          <i class="fa-solid fa-power-off"></i>
+          Desactivar Propiedad
+        </button>
+      </div>
+
+      <div class="status-messages">
+        <div *ngIf="success" class="success-message">
+          <i class="fa-solid fa-circle-check"></i>
+          {{ success }}
+        </div>
+        
+        <div *ngIf="error" class="error-message">
+          <i class="fa-solid fa-circle-xmark"></i>
+          {{ error }}
+        </div>
+        
+        <div *ngIf="desactivarSuccess" class="success-message">
+          <i class="fa-solid fa-circle-check"></i>
+          {{ desactivarSuccess }}
+        </div>
+        
+        <div *ngIf="desactivarError" class="error-message">
+          <i class="fa-solid fa-circle-xmark"></i>
+          {{ desactivarError }}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ng-template #cargandoTpl>
+  <div class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Cargando datos de la propiedad...</p>
+  </div>
+</ng-template>

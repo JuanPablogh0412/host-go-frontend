@@ -196,3 +196,14 @@
     justify-content: center;
   }
 }
+
+/* solicitud-card.component.css */
+.btn-pagar {
+  margin-top: 1rem;
+  background: #ffc107;
+  color: #333;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}

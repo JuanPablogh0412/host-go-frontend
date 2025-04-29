@@ -12,6 +12,10 @@ import { MisPropiedadesComponent } from './components/propiedad/mis-propiedades/
 import { PropiedadDetailComponent } from './components/propiedad/detail/propiedad-detail/propiedad-detail.component';
 import { MisSolicitudesComponent } from './components/solicitud/mis-solicitudes/mis-solicitudes.component';
 import { SolicitudesPropiedadComponent } from './components/solicitud/solicitudes-propiedad/solicitudes-propiedad.component';
+import { PropiedadEditComponent } from './components/propiedad/propiedad-edit/propiedad-edit.component';
+import { SearchResultsComponent } from './components/propiedad/search-results/search-results.component';
+import { PagoComponent } from './components/pago/pago.component';
+import { CalificarPropiedadComponent } from './components/propiedad/calificar-propiedad/calificar-propiedad.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,6 +44,18 @@ export const routes: Routes = [
     path: 'propiedad/:id/solicitudes',
     component: SolicitudesPropiedadComponent,
     data: { renderMode: 'client' }
+  },
+  { 
+    path: 'buscar', 
+    component: SearchResultsComponent ,
+    data: { renderMode: 'client' }
+  },
+  { path: 'propiedad/:id/editar', component: PropiedadEditComponent, data: { renderMode: 'client' } },
+
+  { path: 'solicitud/:id/pagar', component: PagoComponent , data: { renderMode: 'client' }},
+  { 
+    path: 'propiedad/:id/calificar', 
+    component: CalificarPropiedadComponent , data: { renderMode: 'client' }
   },
 
   { path: '**', redirectTo: '', pathMatch: 'full' }

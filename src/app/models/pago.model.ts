@@ -10,3 +10,4 @@ export interface Pago {
   status: Status;
   solicitud: Solicitud;
 }
+export type NuevoPago = Pick<Pago, 'banco' | 'numCuenta'> & { solicitud: { solicitudId: number } };

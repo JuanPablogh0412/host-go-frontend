@@ -2,10 +2,11 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Solicitud } from '../models/solicitud.model';
+import { AppSettings } from '../app-settings';
 
 @Injectable({ providedIn: 'root' })
 export class SolicitudPropiedadService {
-  private baseUrl = 'http://10.43.103.121/Solicitud/propiedad';
+  private baseUrl = `${AppSettings.baseUrl}/Solicitud/propiedad`;
 
   async obtenerPorPropiedad(propiedadId: number): Promise<Solicitud[]> {
     const token = localStorage.getItem('jwt')!;

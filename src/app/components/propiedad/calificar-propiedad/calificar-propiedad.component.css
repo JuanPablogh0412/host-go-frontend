@@ -1,0 +1,56 @@
+.calificar-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+  }
+  
+  .field-group {
+    margin-bottom: 16px;
+  }
+  
+  .field-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .field-group select,
+  .field-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  button {
+    background: #ff5361;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  button[disabled] {
+    opacity: 0.6;
+    cursor: default;
+  }
+  
+  .msg.success {
+    color: #155724;
+    background: #d4edda;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 20px;
+  }
+  
+  .msg.error {
+    color: #721c24;
+    background: #f8d7da;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 20px;
+  }
+  

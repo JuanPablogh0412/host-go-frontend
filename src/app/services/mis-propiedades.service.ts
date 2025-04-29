@@ -2,6 +2,8 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { PropiedadResumen } from '../models/propiedad-resumen.model';
+import { AppSettings } from '../app-settings';
+
 
 interface BackendResumen {
   propiedadId: number;
@@ -13,10 +15,10 @@ interface BackendResumen {
 }
 
 @Injectable({
-  providedIn: 'root'     // <-- esto lo registra globalmente
+  providedIn: 'root'
 })
 export class MisPropiedadesService {
-  private baseUrl = 'http://10.43.103.121/Propiedad/misPropiedades';
+  private baseUrl = `${AppSettings.baseUrl}/Propiedad/misPropiedades`;
 
   async obtenerMisPropiedades(): Promise<PropiedadResumen[]> {
     const token = localStorage.getItem('jwt');

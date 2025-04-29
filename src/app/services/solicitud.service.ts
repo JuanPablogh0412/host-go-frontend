@@ -3,10 +3,11 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Solicitud } from '../models/solicitud.model';
 import { AuthService } from './auth/login.service';
+import { AppSettings } from '../app-settings';
 
 @Injectable({ providedIn: 'root' })
 export class SolicitudService {
-  private baseUrl = 'http://10.43.103.121/Solicitud';
+  private baseUrl = `${AppSettings.baseUrl}/Solicitud`;
 
   constructor(private auth: AuthService) {}
 
@@ -23,6 +24,15 @@ export class SolicitudService {
     const res = await axios.get<Solicitud[]>(`${this.baseUrl}/misSolicitudes`, {
       headers: { Authorization: `Bearer ${token}` }
     });
+    return res.data;
+  }
+
+  async obtenerSolicitud(id: number): Promise<Solicitud> {
+    const token = localStorage.getItem('jwt');
+    const res = await axios.get<Solicitud>(
+      `${this.baseUrl}/${id}`,
+      { headers: token ? { Authorization: `Bearer ${token}` } : {} }
+    );
     return res.data;
   }
 

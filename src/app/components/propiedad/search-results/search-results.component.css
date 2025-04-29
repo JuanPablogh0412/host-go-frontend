@@ -1,0 +1,91 @@
+.list-container{
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.left-col{
+  flex-basis: 70%;
+}
+
+.right-col{
+  flex-basis: 25%;
+}
+
+.left-col h1{
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.sidebar{
+  border: 1px solid #999;
+  padding: 20px 30px;
+  margin-top: 30px;
+}
+
+.sidebar h2{
+  font-weight: 500;
+}
+
+.sidebar h3{
+  font-weight: 500;
+  margin: 20px 0 10px;
+}
+.filter{
+  display: flex;
+  align-items: center;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.filter p{
+  flex: 1;
+}
+
+.filter input{
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.sidebar-link{
+  text-align: right;
+  margin:20px 0;
+}
+
+.sidebar-link a{
+  text-decoration: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  width: 100%;
+}
+
+.pagination img{
+  width: 15px;
+  margin: 10px 20px;
+}
+
+.right-arrow{
+  transform: rotate(180deg);
+}
+
+.pagination span{
+  margin: 10px 8px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.pagination .current{
+  background: #333;
+  color: #fff;
+}
