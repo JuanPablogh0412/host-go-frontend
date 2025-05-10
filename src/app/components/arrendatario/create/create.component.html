@@ -1,0 +1,55 @@
+<div class="crear-arrendatario-background">
+  <div class="registro-container">
+    <h2 *ngIf="!successMessage">Crear cuenta de Arrendatario</h2>
+
+    <!-- FORMULARIO SOLO SI NO HAY MENSAJE DE ÉXITO -->
+    <form *ngIf="!successMessage" [formGroup]="arrendatarioForm" (ngSubmit)="onSubmit()" class="registro-form">
+      <div class="form-group" [ngClass]="{ 'error-field': isInvalid('cedula') }">
+        <label for="cedula">Cédula</label>
+        <input type="number" id="cedula" formControlName="cedula" placeholder="Ej: 1234567890" />
+        <small *ngIf="isInvalid('cedula')">La cédula es obligatoria.</small>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'error-field': isInvalid('nombre') }">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" formControlName="nombre" placeholder="Tu nombre" />
+        <small *ngIf="isInvalid('nombre')">El nombre es obligatorio.</small>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'error-field': isInvalid('apellido') }">
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" formControlName="apellido" placeholder="Tu apellido" />
+        <small *ngIf="isInvalid('apellido')">El apellido es obligatorio.</small>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'error-field': isInvalid('correo') }">
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" formControlName="correo" placeholder="Ej: tuemail@javeriana.edu.co" />
+        <small *ngIf="isInvalid('correo')">Ingresa un correo válido &#64;javeriana.edu.co</small>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'error-field': isInvalid('telefono') }">
+        <label for="telefono">Teléfono</label>
+        <input type="number" id="telefono" formControlName="telefono" placeholder="Ej: 3001234567" />
+        <small *ngIf="isInvalid('telefono')">El teléfono es obligatorio.</small>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'error-field': isInvalid('contrasena') }">
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" formControlName="contrasena" placeholder="Mínimo 8 caracteres" />
+        <small *ngIf="isInvalid('contrasena')">La contraseña debe tener al menos 8 caracteres.</small>
+      </div>
+
+      <button type="submit" [disabled]="arrendatarioForm.invalid">Registrarse</button>
+    </form>
+
+    <!-- MENSAJES -->
+    <div *ngIf="successMessage" class="message success">
+      <i class="fa-solid fa-paper-plane"></i>
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="message error">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

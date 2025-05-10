@@ -1,0 +1,34 @@
+<form [formGroup]="propiedadForm" (ngSubmit)="onSubmit()" class="form-container">
+  <h2>Crear Propiedad</h2>
+
+  <ng-container *ngFor="let field of ['nombre','departamento','municipio','tipoIngreso','descripcion']">
+    <div class="form-group">
+      <label [attr.for]="field">{{ field | titlecase }}</label>
+      <input [id]="field" [formControlName]="field" />
+      <small *ngIf="propiedadForm.get(field)?.invalid">Campo obligatorio</small>
+    </div>
+  </ng-container>
+
+  <div class="form-group-number">
+    <label>Cupos</label>
+    <input type="number" formControlName="capacidad" />
+    <input type="number" formControlName="habitaciones" placeholder="Habitaciones" />
+    <input type="number" formControlName="banos" placeholder="Baños" />
+  </div>
+
+  <div class="form-group-checkbox">
+    <label><input type="checkbox" formControlName="permiteMascotas" /> Permite mascotas</label>
+    <label><input type="checkbox" formControlName="tienePiscina" /> Piscina</label>
+    <label><input type="checkbox" formControlName="tieneAsador" /> Asador</label>
+  </div>
+
+  <div class="form-group">
+    <label for="valorNoche">Valor por noche</label>
+    <input type="number" id="valorNoche" formControlName="valorNoche" />
+  </div>
+
+  <button type="submit" [disabled]="propiedadForm.invalid">Guardar</button>
+
+  <div class="message success" *ngIf="successMessage">{{ successMessage }}</div>
+  <div class="message error"   *ngIf="errorMessage">{{ errorMessage }}</div>
+</form>

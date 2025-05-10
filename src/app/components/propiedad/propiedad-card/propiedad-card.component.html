@@ -1,0 +1,31 @@
+<div class="house">
+  <div class="house-img">
+    <ng-container *ngIf="propiedad.fotos?.length; else placeholder">
+      <img [src]="propiedad.fotos[0]" alt="Imagen de la propiedad" />
+    </ng-container>
+    <ng-template #placeholder>
+      <img src="/placeholder.png" alt="Sin imagen disponible" />
+    </ng-template>
+  </div>
+
+  <div class="house-info">
+    <p>{{ propiedad.departamento }}, {{ propiedad.municipio }}</p>
+    <h3>{{ propiedad.nombre }}</h3>
+    <p>
+      {{ propiedad.habitaciones }} Habitación(es) /
+      {{ propiedad.banos }} Baño(s) /
+      Capacidad: {{ propiedad.capacidad }} persona(s)
+    </p>
+
+    <div class="caracteristicas">
+      <span *ngIf="propiedad.permiteMascotas">🐾 Mascotas</span>
+      <span *ngIf="propiedad.tienePiscina">🏊 Piscina</span>
+      <span *ngIf="propiedad.tieneAsador">🔥 Asador</span>
+    </div>
+
+    <div class="house-price">
+      <p>Desde</p>
+      <h4>${{ propiedad.valorNoche }} <span>/ noche</span></h4>
+    </div>
+  </div>
+</div>

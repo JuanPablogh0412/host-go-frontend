@@ -1,13 +1,47 @@
 <header class="header-container">
-    <div class="logo">
-      <a routerLink="/">HostGo</a>
+  <nav class="navbar">
+    <a routerLink="/" class="logo-link">
+      <img src="host-go-logo-and-name.png" alt="Logo" class="logo" />
+    </a>
+
+    <ul class="nav-links">
+      <li><a routerLink="/about">About</a></li>
+      <li><a routerLink="/services">Services</a></li>
+      <li><a routerLink="/contact">Contact</a></li>
+    </ul>
+
+    <div *ngIf="!isLoggedIn" class="auth-buttons">
+      <a routerLink="/login" class="login-btn">Iniciar sesión</a>
+      <a routerLink="/crear-cuenta" class="register-btn">Registrarse</a>
     </div>
-    <nav>
-      <ul>
-        <li><a routerLink="/" routerLinkActive="active">Home</a></li>
-        <li><a routerLink="/crear-arrendador" routerLinkActive="active">Nuevo Arrendador</a></li>
-        <!-- Añade aquí más links según tus rutas -->
+
+    <div *ngIf="isLoggedIn" class="user-menu">
+      <button class="user-btn" (click)="toggleMenu()">
+        <div class="user-avatar">
+          {{ userName.charAt(0).toUpperCase() }}
+        </div>
+        <span class="user-name">{{ userName }}</span>
+        <i class="fa-solid fa-chevron-down menu-arrow"></i>
+      </button>
+      
+      <ul *ngIf="menuOpen" class="dropdown-menu" [class.show]="menuOpen">
+        <li *ngIf="userRole==='ARRENDADOR'" class="menu-item">
+          <i class="fa-solid fa-house-chimney"></i>
+          <a routerLink="/mis-propiedades">Mis propiedades</a>
+        </li>
+        
+        <li *ngIf="userRole==='ARRENDATARIO'" class="menu-item">
+          <i class="fa-solid fa-file-lines"></i>
+          <a routerLink="/mis-solicitudes">Mis solicitudes</a>
+        </li>
+        
+        <li class="menu-divider"></li>
+        
+        <li class="menu-item logout-item">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <a (click)="logout()">Cerrar sesión</a>
+        </li>
       </ul>
-    </nav>
-  </header>
-  
+    </div>
+  </nav>
+</header>

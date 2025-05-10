@@ -1,0 +1,62 @@
+<div class="list-container">
+    <div class="left-col">
+      <p>{{ propiedades?.length || 0 }} Opciones</p>
+      <h1>Lugares recomendados en Medellín</h1>
+  
+      <app-propiedad-card
+        *ngFor="let propiedad of propiedades"
+        [propiedad]="propiedad">
+      </app-propiedad-card>
+    </div>
+  
+    <div class="right-col">
+      <div class="sidebar">
+        <h2>Seleccionar Filtros</h2>
+        <h3>Tipo de Propiedad</h3>
+        <div class="filter">
+          <input type="checkbox" id="f-casa" />
+          <label for="f-casa">Casa</label>
+          <span>(0)</span>
+        </div>
+        <div class="filter">
+          <input type="checkbox" id="f-apartamento" />
+          <label for="f-apartamento">Apartamento</label>
+          <span>(0)</span>
+        </div>
+  
+        <h3>Características</h3>
+        <div class="filter">
+          <input type="checkbox" id="f-mascotas" />
+          <label for="f-mascotas">Mascotas</label>
+          <span>(0)</span>
+        </div>
+        <div class="filter">
+          <input type="checkbox" id="f-asador" />
+          <label for="f-asador">Asador</label>
+          <span>(0)</span>
+        </div>
+        <div class="filter">
+          <input type="checkbox" id="f-piscina" />
+          <label for="f-piscina">Piscina</label>
+          <span>(0)</span>
+        </div>
+  
+        <div class="sidebar-link">
+          <a routerLink="#">Ver más</a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="pagination">
+      <button class="page-btn"><img src="arrow.png" alt="Prev" /></button>
+      <span class="current">1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+      <span>…</span>
+      <span>10</span>
+      <button class="page-btn"><img src="arrow.png" alt="Next" class="right-arrow" /></button>
+    </div>
+  </div>
+  

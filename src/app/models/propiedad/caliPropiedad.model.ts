@@ -1,5 +1,5 @@
 import { Propiedad } from './propiedad.model';
-import { Status } from './status.enum';
+import { Status } from '../status.enum';
 
 export interface CaliPropiedad {
   caliPropiedadId: number;

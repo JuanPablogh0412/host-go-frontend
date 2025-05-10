@@ -1,6 +1,6 @@
-import { Arrendador } from './arrendador.model';
-import { Status } from './status.enum';
-
+import { Arrendador } from '../arrendador.model';
+import { Status } from '../status.enum';
+import { Foto } from '../foto.model';
 export interface Propiedad {
   propiedadId: number;
   nombre: string;
@@ -17,4 +17,5 @@ export interface Propiedad {
   valorNoche: number;
   status: Status;
   arrendador: Arrendador;
+  fotos?: Foto[];
 }
