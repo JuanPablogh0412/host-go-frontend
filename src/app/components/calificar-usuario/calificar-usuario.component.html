@@ -2,17 +2,15 @@
   <h2>Calificar usuario: {{ nombreUsuario }}</h2>
 
   <div class="campoCalificacion">
-    <label for="estrellas">Estrellas:</label>
-    <select id="estrellas" [(ngModel)]="calificacion.estrellas">
+    <label for="usuario-estrellas">Estrellas:</label>
+    <select id="usuario-estrellas" [(ngModel)]="calificacion.estrellas">
       <option *ngFor="let estrella of [1, 2, 3, 4, 5]" [value]= "estrella">{{ estrella }}</option>
     </select>
   </div>
 
   <div class="campoComentario">
-    <label for="comentario">Comentario:</label><br />
-    <textarea id="comentario" [(ngModel)]="calificacion.comentario" rows="4" cols="40" placeholder="Escribe tu opinión..."></textarea>
+    <label for="usuario-comentario">Comentario:</label><br />
+    <textarea id="usuario-comentario" [(ngModel)]="calificacion.comentario" rows="4" cols="40" placeholder="Escribe tu opinión..."></textarea>
+    <button class="boton-enviar-usuario" (click)="enviarCalificacion()">Enviar Calificación</button>
   </div>
-
-  <button (click)="enviarCalificacion()">Enviar Calificación</button>
-  
 </div>

@@ -1,22 +1,43 @@
-
-<b>Formulario</b><br/>
-
-<app-calificar-usuario [nombreUsuario]="'Juan'"></app-calificar-usuario>
-<button class="boton-comentario" (click)="toggleComentarios2()">{{mostrarComentarios2 ? "Ocultar comentarios":"Ver comentarios"}}</button>
-<div *ngIf="mostrarComentarios2">
-    <app-calificacion
-    [usuario]="'Juan'">
-    </app-calificacion>
+<!-- HEADER que se extiende por toda la página -->
+<div class="usuario-header">
+  <div class="avatar"></div>
+  <div class="usuario-info">
+    <div class="nombre-usuario">Juan</div>
+    <div class="calificacion-usuario">⭐ 4.5</div>
+  </div>
 </div>
 
+<!-- Contenido centrado debajo del header -->
+<div class="usuario-section">
+  <!-- Componente de calificación de usuario -->
+  <app-calificar-usuario [nombreUsuario]="'Juan'"></app-calificar-usuario>
 
-<app-calificar-propiedad  [nombrePropiedad]="'Casa de playa'" [ubicacion]="'Borde del rio'"></app-calificar-propiedad>
+  <!-- Botón para ver/ocultar comentarios -->
+  <button class="boton-comentario" (click)="toggleComentarios2()">
+    {{ mostrarComentarios2 ? "Ocultar comentarios" : "Ver comentarios" }}
+  </button>
+
+  <!-- Comentarios del usuario -->
+  <div *ngIf="mostrarComentarios2" class="comentarios-container">
+    <app-calificacion [usuario]="'Juan'"></app-calificacion>
+  </div>
+</div>
+
+<h2>DISCLAIMER: ESTOS COMPONENTES ESTAN EN LA MISMA PAGINA PARA HACER TODAS LAS PRUEBAS EN UNA SOLA PAGINA </h2>
+
+<!-- Parte de propiedad -->
+<app-calificar-propiedad  
+  [nombrePropiedad]="'Casa de playa'" 
+  [ubicacion]="'Borde del rio'">
+</app-calificar-propiedad>
+
 <button class="boton-comentario" (click)="toggleComentarios1()">
-    {{mostrarComentarios1 ? 'Ocultar Comentarios':'Ver comentarios'}}
+  {{mostrarComentarios1 ? 'Ocultar Comentarios':'Ver comentarios'}}
 </button>
+
 <div *ngIf="mostrarComentarios1">
-    <app-cali-propiedad 
+  <app-cali-propiedad 
     [nombrePropiedad]="'Casa de playa'" 
     [Ubicacion]="'Borde del rio'">
-    </app-cali-propiedad>
+  </app-cali-propiedad>
 </div>

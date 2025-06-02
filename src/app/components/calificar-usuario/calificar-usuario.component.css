@@ -33,7 +33,7 @@ textarea{
     resize: vertical;
 }
 
-button{
+.boton-enviar-usuario{
     background-color: #FF4012;
     color: black;
     font-weight: bold;
