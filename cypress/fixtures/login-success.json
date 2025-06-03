@@ -1,0 +1,9 @@
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.FAKE_PAYLOAD.FAKE_SIGNATURE",
+  "arrendador": {
+    "arrendadorId": 123,
+    "nombre": "Juan",
+    "apellido": "Prueba",
+    "correo": "juan.prueba@ejemplo.com"
+  }
+}

@@ -36,35 +36,43 @@
   </div>
 
   <div class="card-actions">
-    <button 
-      class="accept-btn" 
-      (click)="responder('aceptar')" 
-      [disabled]="solicitud.status !== 'INACTIVE'">
-      <i class="fa-regular fa-circle-check"></i>
-      Aceptar solicitud
-    </button>
-    
-    <button 
-      class="reject-btn"
-      (click)="responder('cancelar')" 
-      [disabled]="solicitud.status !== 'INACTIVE'">
-      <i class="fa-regular fa-circle-xmark"></i>
-      Rechazar solicitud
-    </button>
-    
+    <ng-container *ngIf="!hasPago">
+      <button 
+        class="accept-btn" 
+        (click)="responder('aceptar')" 
+        [disabled]="solicitud.status !== 'INACTIVE'">
+        <i class="fa-regular fa-circle-check"></i>
+        Aceptar solicitud
+      </button>
+      
+      <button 
+        class="reject-btn"
+        (click)="responder('cancelar')" 
+        [disabled]="solicitud.status !== 'INACTIVE'">
+        <i class="fa-regular fa-circle-xmark"></i>
+        Rechazar solicitud
+      </button>
+    </ng-container>
+
     <div class="status-badge" [ngClass]="{
-      'pending': solicitud.status === 'INACTIVE',
+      'pending':  solicitud.status === 'INACTIVE',
       'accepted': solicitud.status === 'ACTIVE',
       'rejected': solicitud.status === 'DELETED'
     }">
       <i class="fa-regular" [ngClass]="{
-        'fa-clock': solicitud.status === 'INACTIVE',
-        'fa-circle-check': solicitud.status === 'ACTIVE',
-        'fa-circle-xmark': solicitud.status === 'DELETED'
+        'fa-clock':         solicitud.status === 'INACTIVE',
+        'fa-circle-check':  solicitud.status === 'ACTIVE',
+        'fa-circle-xmark':  solicitud.status === 'DELETED'
       }"></i>
-      {{ solicitud.status === 'INACTIVE' ? 'En espera' : 
-         solicitud.status === 'ACTIVE' ? 'Aceptada' : 
-         'Rechazada' }}
+      {{ getStatusText(solicitud.status) }}
     </div>
+
+    <ng-container *ngIf="hasPago">
+      <span class="paid-label">Pago realizado</span>
+      <button class="rate-btn" (click)="irACalificarArrendatario()">
+        <i class="fa-regular fa-star"></i>
+        Calificar arrendatario
+      </button>
+    </ng-container>
   </div>
 </div>

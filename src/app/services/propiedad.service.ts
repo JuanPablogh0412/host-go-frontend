@@ -1,14 +1,12 @@
-// src/app/services/propiedad.service.ts
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Propiedad } from '../models/propiedad.model';
 import { AppSettings } from '../app-settings';
 
-
 @Injectable({ providedIn: 'root' })
 export class PropiedadService {
   private baseUrl = `${AppSettings.baseUrl}/Propiedad`;
-  private daneUrl = 'https://www.datos.gov.co/resource/xdk5-pm3f.json';
+  private localUbicacionesUrl = '/colombia.json'; // Asegúrate de mover el JSON a esta ruta
 
   /** Trae todas las propiedades */
   async obtenerPropiedades(): Promise<Propiedad[]> {
@@ -25,9 +23,24 @@ export class PropiedadService {
     return res.data;
   }
 
+  // ✅ Este método ahora lee el JSON local, y devuelve en el formato esperado
   async obtenerUbicaciones(): Promise<{ departamento: string; municipio: string }[]> {
-    const res = await axios.get<{ departamento: string; municipio: string }[]>(this.daneUrl);
-    return res.data;
+    try {
+      const res = await fetch(this.localUbicacionesUrl);
+      const data: { departamento: string; ciudades: string[] }[] = await res.json();
+
+      const ubicaciones: { departamento: string; municipio: string }[] = [];
+      for (const entry of data) {
+        for (const ciudad of entry.ciudades) {
+          ubicaciones.push({ departamento: entry.departamento, municipio: ciudad });
+        }
+      }
+
+      return ubicaciones;
+    } catch {
+      console.error('No se pudieron cargar las ubicaciones desde el JSON local');
+      return [];
+    }
   }
 
   async obtenerPropiedad(id: number): Promise<Propiedad> {
@@ -37,7 +50,7 @@ export class PropiedadService {
 
   async actualizarPropiedad(data: Propiedad): Promise<Propiedad> {
     const res = await axios.put<Propiedad>(
-      `${this.baseUrl}`, 
+      `${this.baseUrl}`,
       data,
       { headers: this.authHeader() }
     );

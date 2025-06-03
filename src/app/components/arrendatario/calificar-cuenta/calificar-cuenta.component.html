@@ -1,8 +1,8 @@
 <div class="rating-container">
   <div class="rating-card">
     <div class="card-header">
-      <h2><i class="fa-regular fa-star"></i> Calificar Propiedad</h2>
-      <p>Comparte tu experiencia para ayudar a otros viajeros</p>
+      <h2><i class="fa-regular fa-star"></i> Calificar Cuenta</h2>
+      <p>Comparte tu experiencia con este usuario</p>
     </div>
 
     <form [formGroup]="caliForm" (ngSubmit)="submit()">
@@ -10,7 +10,7 @@
         <label>Tu Calificación</label>
         <div class="star-rating">
           <span *ngFor="let star of [1,2,3,4,5]" 
-                (click)="setRating(star)"
+                (click)="caliForm.get('estrellas')?.setValue(star)"
                 [class.active]="star <= caliForm.get('estrellas')?.value">
             <i class="fa-regular fa-star"></i>
           </span>

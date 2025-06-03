@@ -16,6 +16,7 @@ import { PropiedadEditComponent } from './components/propiedad/propiedad-edit/pr
 import { SearchResultsComponent } from './components/propiedad/search-results/search-results.component';
 import { PagoComponent } from './components/pago/pago.component';
 import { CalificarPropiedadComponent } from './components/propiedad/calificar-propiedad/calificar-propiedad.component';
+import { CalificarCuentaComponent } from './components/arrendatario/calificar-cuenta/calificar-cuenta.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -57,6 +58,7 @@ export const routes: Routes = [
     path: 'propiedad/:id/calificar', 
     component: CalificarPropiedadComponent , data: { renderMode: 'client' }
   },
+  { path: 'arrendatario/:id/calificar', component: CalificarCuentaComponent, data: { renderMode: 'client' } },
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

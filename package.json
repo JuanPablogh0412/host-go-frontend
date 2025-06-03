@@ -7,6 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "cypress": "cypress open",
+    "cypress:run": "cypress run",
     "serve:ssr:host-go-frontend": "node dist/host-go-frontend/server/server.mjs"
   },
   "private": true,
@@ -37,6 +39,9 @@
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
     "@types/swiper": "^5.4.3",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "cypress": "^14.4.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

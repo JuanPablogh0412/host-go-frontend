@@ -119,7 +119,7 @@
                   <input type="number" min="1" formControlName="cantidadPer"/>
                   <small *ngIf="isInvalid('cantidadPer')">Mínimo 1</small>
                 </div>
-                <button type="submit" [disabled]="reservaForm.invalid">Enviar Solicitud</button>
+                <button type="submit" [disabled]="reservaForm.invalid">Solicitar Arriendo</button>
               </form>
               <p class="msg success" *ngIf="reservaSuccess">{{ reservaSuccess }}</p>
               <p class="msg error"   *ngIf="reservaError">{{ reservaError }}</p>

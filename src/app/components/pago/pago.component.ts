@@ -72,7 +72,7 @@ export class PagoComponent implements OnInit {
       this.success = 'Pago registrado con éxito.';
       setTimeout(() => {
         const propiedadId = this.solicitud.propiedad.propiedadId;
-        this.router.navigate(['/propiedad', propiedadId, 'calificar']);
+        this.router.navigate(['/mis-solicitudes']);
       }, 1500);
     } catch (e: any) {
       this.error = e.response?.data?.error || 'Error al procesar el pago';

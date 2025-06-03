@@ -4,7 +4,6 @@ import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import { CaliPropiedadService } from '../../../services/cali-propiedad.service';
-import { CaliPropiedad }        from '../../../models/caliPropiedad.model';
 
 @Component({
   selector: 'app-calificar-propiedad',
@@ -27,13 +26,18 @@ export class CalificarPropiedadComponent implements OnInit {
     private router: Router
   ) {
     this.caliForm = fb.group({
-      estrellas:   [5, [Validators.required, Validators.min(1), Validators.max(5)]],
-      comentario:  ['', Validators.required]
+      estrellas: [5, [Validators.required, Validators.min(1), Validators.max(5)]],
+      comentario: ['', Validators.required]
     });
   }
 
   ngOnInit() {
     this.propiedadId = +this.route.snapshot.paramMap.get('id')!;
+  }
+
+  // Función para establecer la calificación con estrellas
+  setRating(rating: number) {
+    this.caliForm.get('estrellas')?.setValue(rating);
   }
 
   isInvalid(control: string): boolean {
