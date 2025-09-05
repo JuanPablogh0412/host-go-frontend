@@ -30,6 +30,7 @@ export class ArrendadorCreateComponent {
 
   async onSubmit(): Promise<void> {
     if (this.arrendadorForm.invalid) {
+      this.arrendadorForm.markAllAsTouched();
       return;
     }
 
@@ -38,16 +39,21 @@ export class ArrendadorCreateComponent {
     try {
       const res = await this.arrendadorService.createArrendador(arrendadorData);
       if (res) {
-        this.successMessage = 'Arrendador creado correctamente';
+        this.successMessage = 'Cuenta creada correctamente! Revisa tu correo para activar tu cuenta.';
         this.errorMessage = '';
         this.arrendadorForm.reset();
       } else {
-        this.errorMessage = 'No se pudo crear el arrendador';
+        this.errorMessage = 'No se pudo crear tu cuenta. Intenta nuevamente.';
         this.successMessage = '';
       }
-    } catch (error) {
-      this.errorMessage = 'Error inesperado al crear arrendador';
+    } catch (error: any) {
+      this.errorMessage = error?.error || 'Error inesperado al crear la cuenta. Por favor, intenta nuevamente.';
       this.successMessage = '';
     }
+  }
+
+  isInvalid(controlName: string): boolean {
+    const control = this.arrendadorForm.get(controlName);
+    return !!control && control.invalid && (control.dirty || control.touched);
   }
 }

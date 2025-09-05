@@ -1,0 +1,12 @@
+<div class="background">
+    <div class="activacion-container" [ngClass]="{ 'success': exito, 'error': !exito }">
+      <h2>{{ mensaje }}</h2>
+  
+      <i *ngIf="exito" class="fa-solid fa-user-check" style="color: #28a745;"></i>
+      <i *ngIf="!exito" class="fa-solid fa-user-xmark" style="color: #dc3545;"></i>
+  
+      <button *ngIf="exito" class="btn-inicio" routerLink="/login">Iniciar Sesión</button>
+
+    </div>
+  </div>
+  

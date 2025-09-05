@@ -1,0 +1,37 @@
+<div class="list-container">
+  <div class="left-col">
+    <h1>
+      <i class="fa-solid fa-house-user"></i>
+      Mis Propiedades
+    </h1>
+    
+    <ng-container *ngIf="cargando">
+      <div class="loading-container">
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+      </div>
+    </ng-container>
+    
+    <ng-container *ngIf="!cargando && error">
+      <div class="msg error">{{ error }}</div>
+    </ng-container>
+    
+    <ng-container *ngIf="!cargando && !error && propiedades.length === 0">
+      <div class="msg">
+        <i class="fas fa-home"></i>
+        <p>Aún no tienes propiedades registradas</p>
+        <a routerLink="/crear-propiedad">
+          <i class="fas fa-plus"></i> Crear nueva propiedad
+        </a>
+      </div>
+    </ng-container>
+    
+    <div class="properties-grid">
+      <app-mi-propiedad-card
+        *ngFor="let p of propiedades"
+        [propiedad]="p">
+      </app-mi-propiedad-card>
+    </div>
+  </div>
+</div>

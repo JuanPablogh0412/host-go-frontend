@@ -1,0 +1,70 @@
+<div class="solicitud-card">
+  <div class="card-header">
+    <div class="user-avatar">
+      <i class="fa-regular fa-user"></i>
+    </div>
+    <div class="user-info">
+      <h3>{{ solicitud.arrendatario.nombre }} {{ solicitud.arrendatario.apellido }}</h3>
+      <p class="user-email">{{ solicitud.arrendatario.correo }}</p>
+    </div>
+  </div>
+
+  <div class="card-details">
+    <div class="detail-item">
+      <i class="fa-regular fa-calendar"></i>
+      <div>
+        <label>Periodo</label>
+        <p>{{ solicitud.fechaInicio | date:'dd MMM' }} - {{ solicitud.fechaFin | date:'dd MMM yyyy' }}</p>
+      </div>
+    </div>
+    
+    <div class="detail-item">
+      <i class="fa-solid fa-users"></i>
+      <div>
+        <label>Huéspedes</label>
+        <p>{{ solicitud.cantidadPer }} persona{{ solicitud.cantidadPer > 1 ? 's' : '' }}</p>
+      </div>
+    </div>
+    
+    <div class="detail-item highlight">
+      <i class="fa-solid fa-money-check-dollar"></i>
+      <div>
+        <label>Costo total</label>
+        <p class="price">${{ solicitud.costoTotal | number }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-actions">
+    <button 
+      class="accept-btn" 
+      (click)="responder('aceptar')" 
+      [disabled]="solicitud.status !== 'INACTIVE'">
+      <i class="fa-regular fa-circle-check"></i>
+      Aceptar solicitud
+    </button>
+    
+    <button 
+      class="reject-btn"
+      (click)="responder('cancelar')" 
+      [disabled]="solicitud.status !== 'INACTIVE'">
+      <i class="fa-regular fa-circle-xmark"></i>
+      Rechazar solicitud
+    </button>
+    
+    <div class="status-badge" [ngClass]="{
+      'pending': solicitud.status === 'INACTIVE',
+      'accepted': solicitud.status === 'ACTIVE',
+      'rejected': solicitud.status === 'DELETED'
+    }">
+      <i class="fa-regular" [ngClass]="{
+        'fa-clock': solicitud.status === 'INACTIVE',
+        'fa-circle-check': solicitud.status === 'ACTIVE',
+        'fa-circle-xmark': solicitud.status === 'DELETED'
+      }"></i>
+      {{ solicitud.status === 'INACTIVE' ? 'En espera' : 
+         solicitud.status === 'ACTIVE' ? 'Aceptada' : 
+         'Rechazada' }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<!-- src/app/components/pago/pago.component.html -->
+<ng-template #loadingTpl>
+    <p>Cargando...</p>
+  </ng-template>
+  
+  <ng-template #errorTpl>
+    <p class="msg error">{{ error }}</p>
+  </ng-template>
+  
+  <div *ngIf="!error && solicitud; else errorTpl">
+  
+    <h2>Pagar Solicitud #{{ solicitud.solicitudId }}</h2>
+    <p>Costo total: <strong>${{ solicitud.costoTotal | number }}</strong></p>
+  
+    <form [formGroup]="pagoForm" (ngSubmit)="submitPago()">
+      <div class="field-group">
+        <label>Banco</label>
+        <select formControlName="banco">
+          <option value="" disabled>Selecciona un banco</option>
+          <option *ngFor="let b of bancos" [value]="b">
+            {{ b.replace('_', ' ') }}
+          </option>
+        </select>
+        <small *ngIf="isInvalid('banco')">Debes elegir un banco.</small>
+      </div>
+  
+      <div class="field-group">
+        <label>Cuenta Bancaria</label>
+        <input type="text" formControlName="numCuenta" />
+        <small *ngIf="isInvalid('numCuenta')">
+          Debe tener al menos 6 caracteres.
+        </small>
+      </div>
+  
+      <button type="submit" [disabled]="pagoForm.invalid">Pagar</button>
+    </form>
+  
+    <p class="msg success" *ngIf="success">{{ success }}</p>
+  </div>
+  

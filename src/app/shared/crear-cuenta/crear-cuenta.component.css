@@ -1,0 +1,69 @@
+.crear-cuenta-background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/background1.png');
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+.registro-opciones-container {
+max-width: 1000px;
+margin: 80px auto;
+padding: 40px;
+background: linear-gradient(to bottom, #ffac71, #f37b57);
+border-radius: 20px;
+text-align: center;
+box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.registro-opciones-container h2 {
+font-size: 2.5rem;
+margin-bottom: 30px;
+color: #333;
+}
+
+.opciones-wrapper {
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+gap: 30px;
+}
+
+a.opcion-card {
+display: block;
+text-decoration: none;
+background-color: #fff;
+flex: 1 1 300px;
+padding: 30px;
+border-radius: 16px;
+cursor: pointer;
+transition: transform 0.3s, box-shadow 0.3s;
+box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+color: inherit;
+}
+
+a.opcion-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+.opcion-card img {
+width: 90px;
+height: auto;
+margin-bottom: 20px;
+}
+
+.opcion-card h3 {
+color: #333;
+font-size: 1.5rem;
+margin-bottom: 10px;
+}
+
+.opcion-card p {
+color: #555;
+font-size: 1rem;
+}

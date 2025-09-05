@@ -1,38 +1,223 @@
-:host {
-    display: block;
-    background: linear-gradient(90deg, #ff4012, #ff5b2a);
-    color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0.75rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.25rem;
-    margin: 0;
-    padding: 0;
-  }
-  nav a {
-    text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.2s;
-    opacity: 0.9;
-  }
-  nav a:hover,
-  nav a.active {
-    opacity: 1;
-  }
-  
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fuente principal solo para elementos de texto */
+body, button, a:not(.menu-item a), .nav-links, .auth-buttons, .user-name {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Restaurar fuente para iconos */
+i, .fa-solid {
+  font-family: "Font Awesome 6 Free" !important;
+}
+
+/* Navbar principal */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 7%;
+  background-color: #f8f9fa;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Logo */
+.logo {
+  width: 150px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.03);
+}
+
+/* Enlaces de navegación */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #ff7642;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff7642;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Botones de autenticación */
+.auth-buttons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.login-btn {
+  background: transparent;
+  color: #000;
+  padding: 8px 20px;
+  border: 2px solid #ff5361;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+}
+
+.login-btn:hover {
+  background-color: #ff5361;
+  color: #fff;
+}
+
+.register-btn {
+  background-color: #ff5361;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background-color 0.2s;
+  border: 2px solid transparent;
+}
+
+.register-btn:hover {
+  background-color: #ff7642;
+}
+
+/* Menú de usuario mejorado */
+.user-menu {
+  position: relative;
+  margin-left: 20px;
+}
+
+.user-btn {
+  background: none;
+  border: 2px solid #eee;
+  border-radius: 30px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-btn:hover {
+  background: #fff;
+  border-color: #ff7642;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: #ff5361;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.user-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.menu-arrow {
+  font-size: 0.9rem;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.user-btn:hover .menu-arrow {
+  color: #ff7642;
+  transform: rotate(180deg);
+}
+
+/* Menú desplegable - Versión corregida */
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  list-style: none;
+  min-width: 220px;
+  padding: 10px 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: none; /* Cambio crucial */
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  display: block; /* Cambio crucial */
+}
+
+.menu-item {
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background: #fff5f2;
+}
+
+.menu-item i {
+  min-width: 20px;
+  color: #ff5361;
+  text-align: center;
+}
+
+.menu-item a {
+  color: #444;
+  text-decoration: none;
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.menu-divider {
+  height: 1px;
+  background: #eee;
+  margin: 8px 0;
+}
+
+.logout-item a {
+  color: #ff5361 !important;
+  font-weight: 500;
+}
+
+/* Eliminar la animación conflictiva */

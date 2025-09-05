@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Arrendador } from '../models/arrendador.model';
 import { ArrendadorCreate } from '../models/arrendador-create.model';
+import { AppSettings } from '../app-settings';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArrendadorService {
 
-  private baseUrl = 'http://localhost:8080/Arrendador';
+  private baseUrl = `${AppSettings.baseUrl}/Arrendador`;
 
   constructor() { }
 

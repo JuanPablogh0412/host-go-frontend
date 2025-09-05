@@ -1,0 +1,215 @@
+/* src/app/components/propiedad/create/propiedad-create.component.css */
+
+.create-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/background4.png');
+  background-size: cover;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.create-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 20%, transparent 70%);
+  animation: gradient-pulse 15s infinite linear;
+}
+
+.form-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.form-card h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  color: #ff5b2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.form-card h2 i {
+  font-size: 1.8rem;
+  color: #ff4012;
+}
+
+.row {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.field {
+  flex: 1;
+  min-width: 280px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #444;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 95%;
+  padding: 14px;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #ff7642;
+  box-shadow: 0 0 0 3px rgba(255, 118, 66, 0.2);
+  outline: none;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.file-upload {
+  border: 2px dashed #ff9d7c;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 157, 124, 0.05);
+}
+
+.file-upload:hover {
+  background: rgba(255, 157, 124, 0.1);
+  transform: translateY(-2px);
+}
+
+.file-upload i {
+  font-size: 2rem;
+  color: #ff5b2a;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.checkboxes {
+  display: flex;
+  gap: 25px;
+  margin: 25px 0;
+  flex-wrap: wrap;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #ff5b2a;
+  cursor: pointer;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #ff5b2a, #ff4012);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 91, 42, 0.3);
+}
+
+button:hover::after {
+  left: 150%;
+}
+
+button:disabled {
+  background: #ccc;
+  transform: none;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.msg {
+  margin-top: 25px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 500;
+  animation: slideIn 0.5s ease;
+}
+
+.success { 
+  background: #d4edda; 
+  color: #155724;
+  border: 2px solid #28a745;
+}
+
+.error { 
+  background: #f8d7da; 
+  color: #721c24;
+  border: 2px solid #dc3545;
+}
+
+@keyframes gradient-pulse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
